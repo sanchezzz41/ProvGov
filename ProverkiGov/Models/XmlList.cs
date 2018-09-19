@@ -1,19 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace ProverkiGov
 {
+    /// <summary>
+    /// Элемент в реестре данных
+    /// </summary>
     [XmlRoot(ElementName = "item")]
-    public class Item
+    public class ReestrItem
     {
+        /// <summary>
+        /// Id проверки
+        /// </summary>
         [XmlAttribute(AttributeName = "identifier")]
-        public string Identifier { get; set; }
+        public int Identifier { get; set; }
+
         [XmlAttribute(AttributeName = "title")]
         public string Title { get; set; }
+        /// <summary>
+        /// Ссылка на документ содержащий информацию о проверки
+        /// </summary>
         [XmlAttribute(AttributeName = "link")]
         public string Link { get; set; }
+
+        /// <summary>
+        /// Формат документа для скачивания
+        /// </summary>
         [XmlAttribute(AttributeName = "format")]
         public string Format { get; set; }
     }
@@ -22,9 +34,12 @@ namespace ProverkiGov
     public class Standardversion
     {
         [XmlElement(ElementName = "item")]
-        public List<Item> Item { get; set; }
+        public List<ReestrItem> Item { get; set; }
     }
 
+    /// <summary>
+    /// Объект для реестра данных
+    /// </summary>
     [XmlRoot(ElementName = "list")]
     public class ProverkiList
     {
